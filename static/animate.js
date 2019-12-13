@@ -7,11 +7,14 @@ $(document).ready(function () {
         }
         else {
             $(".file-upload1").addClass('active');
-            console.log("hi");
-            const file = document.getElementById('chooseFile1').files[0];
+
+            let file = document.getElementById("chooseFile1").files[0];  // file from input
+            let req = new XMLHttpRequest();
             let formData = new FormData();
+
             formData.append("file", file);
-            fetch('/upload/file', { method: "POST", body: formData });
+            req.open("POST", '/');
+            req.send(formData);
 
             $("#noFile1").text(filename.replace("C:\\fakepath\\", ""));
         }
@@ -24,7 +27,14 @@ $(document).ready(function () {
         }
         else {
             $(".file-upload2").addClass('active');
-            console.log("hi");
+            let file = document.getElementById("chooseFile2").files[0];  // file from input
+            let req = new XMLHttpRequest();
+            let formData = new FormData();
+
+            formData.append("file", file);
+            req.open("POST", '/');
+            req.send(formData);
+
             $("#noFile2").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
@@ -36,7 +46,14 @@ $(document).ready(function () {
         }
         else {
             $(".file-upload3").addClass('active');
-            console.log("hi");
+            let file = document.getElementById("chooseFile3").files[0];  // file from input
+            let req = new XMLHttpRequest();
+            let formData = new FormData();
+
+            formData.append("file", file);
+            req.open("POST", '/');
+            req.send(formData);
+
             $("#noFile3").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
@@ -48,7 +65,14 @@ $(document).ready(function () {
         }
         else {
             $(".file-upload4").addClass('active');
-            console.log("hi");
+            let file = document.getElementById("chooseFile4").files[0];  // file from input
+            let req = new XMLHttpRequest();
+            let formData = new FormData();
+
+            formData.append("file", file);
+            req.open("POST", '/');
+            req.send(formData);
+
             $("#noFile4").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
