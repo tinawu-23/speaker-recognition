@@ -15,7 +15,7 @@ import argparse
 parser = argparse.ArgumentParser()
 # set up training configuration.
 parser.add_argument('--gpu', default='', type=str)
-parser.add_argument('--resume', default='', type=str)
+parser.add_argument('--resume', default='weights.h5', type=str)
 parser.add_argument('--batch_size', default=16, type=int)
 parser.add_argument('--data_path', default='data/', type=str)
 # set up network configuration.
@@ -73,7 +73,7 @@ def main():
                                                 num_class=params['n_classes'],
                                                 mode='eval', args=args)
 
-    # ==> load pre-trained model ???
+    # ==> load pre-trained model
     if args.resume:
         # ==> get real_model from arguments input,
         # load the model if the imag_model == real_model.
@@ -135,8 +135,8 @@ def main():
     # np.save('prediction_scores.npy', scores)
     # np.save('groundtruth_labels.npy', labels)
 
-    eer, thresh = toolkits.calculate_eer(labels, scores)
-    print('==> model : {}, EER: {}'.format(args.resume, eer))
+    # eer, thresh = toolkits.calculate_eer(labels, scores)
+    # print('==> model : {}, EER: {}'.format(args.resume, eer))
 
 
 def set_result_path(args):
