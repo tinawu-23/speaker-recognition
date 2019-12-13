@@ -8,6 +8,11 @@ $(document).ready(function () {
         else {
             $(".file-upload1").addClass('active');
             console.log("hi");
+            const file = document.getElementById('chooseFile1').files[0];
+            let formData = new FormData();
+            formData.append("file", file);
+            fetch('/upload/file', { method: "POST", body: formData });
+
             $("#noFile1").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
