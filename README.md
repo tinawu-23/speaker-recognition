@@ -2,7 +2,10 @@
 ## Usage
 To run model:     
 `cd model/src`    
-run `python predict.py` 
+run `python predict.py`     
+<br>
+To run application:     
+`python app.py`     
 ## Requirements
 `pip install -r requirements.txt`
 - Python 3.6.5    
