@@ -15,7 +15,7 @@ import argparse
 parser = argparse.ArgumentParser()
 # set up training configuration.
 parser.add_argument('--gpu', default='', type=str)
-parser.add_argument('--resume', default='weights.h5', type=str)
+parser.add_argument('--resume', default='model/src/weights.h5', type=str)
 parser.add_argument('--batch_size', default=16, type=int)
 parser.add_argument('--data_path', default='data/', type=str)
 # set up network configuration.
@@ -44,7 +44,7 @@ def main():
     
     # AI project list file
     if args.test_type == 'ai':
-        verify_list = np.loadtxt('../meta/sample.txt', str)
+        verify_list = np.loadtxt('model\meta\sample.txt', str)
     else:
         raise IOError('==> unknown test type.')
 
@@ -79,13 +79,13 @@ def main():
         # load the model if the imag_model == real_model.
         print('args.resume, isfile: wgts, os.path, os.path.isfile(args.resume) below')
         print(args.resume)
-        print(os.path.isfile('weights.h5')) #if in contents dir, VGG-Speaker-Recognition/src/weights.h5
+        print(os.path.isfile('model/src/weights.h5')) #if in contents dir, VGG-Speaker-Recognition model/src/weights.h5
         print(os.path)
         print(os.path.isfile(args.resume))
         
-        #'VGG-Speaker-Recognition/src/weights.h5' in below block used to be isfile(args.resume) etc
-        if os.path.isfile('weights.h5'):
-            network_eval.load_weights('weights.h5', by_name=True)
+        #'VGG-Speaker-Recognition model/src/weights.h5' in below block used to be isfile(args.resume) etc
+        if os.path.isfile('model/src/weights.h5'):
+            network_eval.load_weights('model/src/weights.h5', by_name=True)
             #print(set_result_path(args))
             #result_path = set_result_path(args)  
             print('==> successfully loading model {}.'.format(args.resume))
@@ -122,6 +122,12 @@ def main():
 
         scores += [np.sum(v1*v2)]
         labels += [verify_lb[c]]
+
+        if verify_lb[c] == 1: # if predicted to be the same user
+            f = open("result.txt", "a")
+            f.write(str(c+1))
+            f.close()
+            
         print('scores : {}, gt : {}'.format(scores[-1], verify_lb[c]))
 
     scores = np.array(scores)

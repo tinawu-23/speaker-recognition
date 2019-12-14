@@ -18,7 +18,7 @@ def main():
     return render_template('index.html')
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST', 'GET'])
 def upload_file():
     if request.method == 'POST':
         print(request.files)
@@ -30,6 +30,16 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('upload_file', filename=filename))
+
+
+@app.route('/process')
+def run_model():
+    print("here")
+    cmd = "python model/src/predict.py"
+    os.system(cmd)
+    f = open("result.txt", "r")
+    predictedUser = f.readlines()[0].strip()
+    return "Predicted User " + str(predictedUser)
 
 
 if __name__ == "__main__":
