@@ -40,13 +40,13 @@ def main():
     # ==================================
     #       Get Train/Val.
     # ==================================
-    print('==> calculating test({}) data lists...'.format(args.test_type))
+    print('Calculating test data lists...')
     
     # AI project list file
     if args.test_type == 'ai':
         verify_list = np.loadtxt('model\meta\sample.txt', str)
     else:
-        raise IOError('==> unknown test type.')
+        raise IOError('Unknown test type.')
 
     verify_lb = np.array([int(i[0]) for i in verify_list])
     list1 = np.array([os.path.join(args.data_path, i[1]) for i in verify_list])
@@ -77,31 +77,23 @@ def main():
     if args.resume:
         # ==> get real_model from arguments input,
         # load the model if the imag_model == real_model.
-        print('args.resume, isfile: wgts, os.path, os.path.isfile(args.resume) below')
-        print(args.resume)
-        print(os.path.isfile('model/src/weights.h5')) #if in contents dir, VGG-Speaker-Recognition model/src/weights.h5
-        print(os.path)
-        print(os.path.isfile(args.resume))
         
         #'VGG-Speaker-Recognition model/src/weights.h5' in below block used to be isfile(args.resume) etc
         if os.path.isfile('model/src/weights.h5'):
             network_eval.load_weights('model/src/weights.h5', by_name=True)
-            #print(set_result_path(args))
-            #result_path = set_result_path(args)  
-            print('==> successfully loading model {}.'.format(args.resume))
+            print('Successfully loading model {}.'.format(args.resume))
         else:
-            raise IOError("==> no checkpoint found at '{}'".format(args.resume))
+            raise IOError("No checkpoint found at '{}'".format(args.resume))
     else:
-        raise IOError('==> please type in the model to load')
+        raise IOError('Please type in the model to load')
 
-    print('==> start testing.')
+    print('\nStart testing...')
 
     # The feature extraction process has to be done sample-by-sample,
     # because each sample is of different lengths.
     total_length = len(unique_list)
     feats, scores, labels = [], [], []
     for c, ID in enumerate(unique_list):
-        if c % 50 == 0: print('Finish extracting features for {}/{}th wav.'.format(c, total_length))
         specs = ut.load_data(ID, win_length=params['win_length'], sr=params['sampling_rate'],
                              hop_length=params['hop_length'], n_fft=params['nfft'],
                              spec_len=params['spec_len'], mode='eval')
@@ -127,8 +119,7 @@ def main():
             f = open("result.txt", "a")
             f.write(str(c+1))
             f.close()
-            
-        print('scores : {}, gt : {}'.format(scores[-1], verify_lb[c]))
+        print('Score : {}, Result : {}'.format(scores[-1], verify_lb[c]))
 
     scores = np.array(scores)
     labels = np.array(labels)

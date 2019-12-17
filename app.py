@@ -34,12 +34,28 @@ def upload_file():
 
 @app.route('/process')
 def run_model():
-    print("here")
-    cmd = "python model/src/predict.py"
-    os.system(cmd)
+    # cmd = "python model/src/predict.py"
+    # os.system(cmd)
+
     f = open("result.txt", "r")
-    predictedUser = f.readlines()[0].strip()
-    return "Predicted User " + str(predictedUser)
+    try: 
+        predictedUser = f.readlines()[0].strip()
+    except: 
+        predictedUser = '0'
+        
+    f.close()
+        
+    if os.path.exists("result.txt"):
+        os.remove("result.txt")
+
+    if predictedUser == '1':
+        return render_template('result1.html')
+    elif predictedUser == '2':
+        return render_template('result2.html')
+    elif predictedUser == '3':
+        return render_template('result3.html')
+    else:
+        return render_template('noresult.html')
 
 
 if __name__ == "__main__":

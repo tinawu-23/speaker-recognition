@@ -6,15 +6,16 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="static/styles.css">
     <title>Speaker Verification</title>
+    <link rel="icon" type="image/png" href="./static/favicon.ico" />
 </head>
 
 <body>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="static/animate.js"></script>
-
     <div class="title">
         <h1>Speaker Vertification</h1>
     </div>
+    <br>
     <br>
     <div class="key-upload">
         <p>Please Upload User <b>Key</b> Audio: </p>
@@ -58,14 +59,10 @@
     </div>
 
     <br>
-    <!-- https://stackoverflow.com/questions/42601478/flask-calling-python-function-on-button-onclick-event -->
+    <br>
+    <br>
     <div class="buttondiv">
         <a href="{{ url_for('run_model') }}"><button class='button' id="verify">Verify</button></a>
-    </div>
-    <br>
-    <br>
-    <div class="alert">
-        <p>The <b>first</b> one is the user.</p>
     </div>
 </body>
 
