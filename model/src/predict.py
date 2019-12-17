@@ -104,6 +104,8 @@ def main():
     
     feats = np.array(feats)
 
+    allscores = []
+
     # ==> compute the pair-wise similarity.
     for c, (p1, p2) in enumerate(zip(list1, list2)):
         ind1 = np.where(unique_list == p1)[0][0]
@@ -115,14 +117,18 @@ def main():
         scores += [np.sum(v1*v2)]
         labels += [verify_lb[c]]
 
-        if verify_lb[c] == 1: # if predicted to be the same user
-            f = open("result.txt", "a")
-            f.write(str(c+1))
-            f.close()
-        print('Score : {}, Result : {}'.format(scores[-1], verify_lb[c]))
-
-    scores = np.array(scores)
-    labels = np.array(labels)
+        allscores.append(scores[-1])
+        print('Score : {}'.format(scores[-1]))
+    
+    f = open("result.txt", "a")
+    maxscore = max(allscores)
+    if maxscore < 0.6:
+        ind = '0'
+    else:
+        ind = str(allscores.index(maxscore) + 1)
+        
+    f.write(ind)
+    f.close()
 
     #change save file for colab; used to be what's below
     #np.save(os.path.join(result_path, 'prediction_scores.npy'), scores)

@@ -34,8 +34,8 @@ def upload_file():
 
 @app.route('/process')
 def run_model():
-    # cmd = "python model/src/predict.py"
-    # os.system(cmd)
+    cmd = "python model/src/predict.py"
+    os.system(cmd)
 
     f = open("result.txt", "r")
     try: 

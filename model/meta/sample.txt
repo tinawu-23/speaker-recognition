@@ -1,5 +1,3 @@
-1 sample/Luke1.wav sample/Luke2.wav
-0 sample/Luke1.wav sample/Kat1.wav
-0 sample/Luke1.wav sample/Kat2.wav
-0 sample/Luke1.wav sample/Tina1.wav
-0 sample/Luke1.wav sample/Tina2.wav
+0 sample/user1.wav sample/key.wav
+0 sample/user2.wav sample/key.wav
+0 sample/user3.wav sample/key.wav
