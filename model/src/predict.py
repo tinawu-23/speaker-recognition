@@ -17,7 +17,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--gpu', default='', type=str)
 parser.add_argument('--resume', default='model/src/weights.h5', type=str)
 parser.add_argument('--batch_size', default=16, type=int)
-parser.add_argument('--data_path', default='data/', type=str)
+parser.add_argument('--data_path', default='../static/files/', type=str)
 # set up network configuration.
 parser.add_argument('--net', default='resnet34s', choices=['resnet34s', 'resnet34l'], type=str)
 parser.add_argument('--ghost_cluster', default=2, type=int)
@@ -44,7 +44,7 @@ def main():
     
     # AI project list file
     if args.test_type == 'ai':
-        verify_list = np.loadtxt('model\meta\sample.txt', str)
+        verify_list = np.loadtxt('model\meta\sets.txt', str)
     else:
         raise IOError('Unknown test type.')
 

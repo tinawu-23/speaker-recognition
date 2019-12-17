@@ -3,7 +3,7 @@ from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 
 
-ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'} ##TODO: change this to wav file eventually
+ALLOWED_EXTENSIONS = {'wav'} 
 
 app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = './static/files'

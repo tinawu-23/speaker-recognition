@@ -1,3 +1,0 @@
-0 sample/user1.wav sample/key.wav
-0 sample/user2.wav sample/key.wav
-0 sample/user3.wav sample/key.wav
