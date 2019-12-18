@@ -34,8 +34,11 @@ def upload_file():
 
 @app.route('/process')
 def run_model():
-    cmd = "python model/src/predict.py"
-    os.system(cmd)
+    os.system("python model/src/predict.py")
+    os.system("python model/src2/pre_process_waveforms.py")
+    os.system("python model/src2/predict.py")
+    os.system("python3 model/combined_predict.py")
+
 
     f = open("result.txt", "r")
     try: 

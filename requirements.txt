@@ -1,5 +1,7 @@
 numpy==1.16.2
-cv2==4.1.1
-librosa==0.7.1
+opencv-python==4.1.*
+librosa==0.7.*
 tensorflow==1.4.0
 keras==2.1.4
+flask
+h5py

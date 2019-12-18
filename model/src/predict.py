@@ -8,9 +8,8 @@ import toolkits
 import utils as ut
 
 import pdb
-# ===========================================
-#        Parse the argument
-# ===========================================
+import pickle
+
 import argparse
 parser = argparse.ArgumentParser()
 # set up training configuration.
@@ -18,6 +17,7 @@ parser.add_argument('--gpu', default='', type=str)
 parser.add_argument('--resume', default='model/src/weights.h5', type=str)
 parser.add_argument('--batch_size', default=16, type=int)
 parser.add_argument('--data_path', default='../static/files/', type=str)
+
 # set up network configuration.
 parser.add_argument('--net', default='resnet34s', choices=['resnet34s', 'resnet34l'], type=str)
 parser.add_argument('--ghost_cluster', default=2, type=int)
@@ -44,7 +44,7 @@ def main():
     
     # AI project list file
     if args.test_type == 'ai':
-        verify_list = np.loadtxt('model\meta\sets.txt', str)
+        verify_list = np.loadtxt('model/meta/sets.txt', str)
     else:
         raise IOError('Unknown test type.')
 
@@ -107,6 +107,7 @@ def main():
     allscores = []
 
     # ==> compute the pair-wise similarity.
+    print("Model 1 scores")
     for c, (p1, p2) in enumerate(zip(list1, list2)):
         ind1 = np.where(unique_list == p1)[0][0]
         ind2 = np.where(unique_list == p2)[0][0]
@@ -120,34 +121,18 @@ def main():
         allscores.append(scores[-1])
         print('Score : {}'.format(scores[-1]))
     
-    f = open("result.txt", "a")
-    maxscore = max(allscores)
-    if maxscore < 0.6:
-        ind = '0'
-    else:
-        ind = str(allscores.index(maxscore) + 1)
-        
-    f.write(ind)
-    f.close()
-
-    #change save file for colab; used to be what's below
-    #np.save(os.path.join(result_path, 'prediction_scores.npy'), scores)
-    #np.save(os.path.join(result_path, 'groundtruth_labels.npy'), labels)
-
-    #.npy is a numpy array file
-    # np.save('prediction_scores.npy', scores)
-    # np.save('groundtruth_labels.npy', labels)
-
-    # eer, thresh = toolkits.calculate_eer(labels, scores)
-    # print('==> model : {}, EER: {}'.format(args.resume, eer))
+    with open("result1.pickle", "wb") as w:
+        pickle.dump(scores, w)
 
 
-def set_result_path(args):
-    model_path = args.resume
-    exp_path = model_path.split(os.sep)
-    result_path = os.path.join('../result', exp_path[2], exp_path[3])
-    if not os.path.exists(result_path): os.makedirs(result_path)
-    return result_path
+    # maxscore = max(allscores)
+    # if maxscore < 0.6:
+    #     ind = '0'
+    # else:
+    #     ind = str(allscores.index(maxscore) + 1)
+    
+    # f.write(ind)
+    #f.close()
 
 
 if __name__ == "__main__":

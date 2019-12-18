@@ -111,6 +111,7 @@ def calculate_eer(y, y_score):
     from scipy.interpolate import interp1d
 
     fpr, tpr, thresholds = roc_curve(y, y_score, pos_label=1)
+
     eer = brentq(lambda x : 1. - x - interp1d(fpr, tpr)(x), 0., 1.)
     thresh = interp1d(fpr, thresholds)(eer)
     return eer, thresh
