@@ -1,19 +1,19 @@
 from pydub import AudioSegment
 
-audio = AudioSegment.from_wav("../static/files/user1.wav")
+audio = AudioSegment.from_wav("./5s/vaishali5s.wav")
 length = audio.duration_seconds
 half = (length//2) * 1000
 wav1 = audio[:half]
-wav1.export('./2s/user1.wav', format="wav")
+wav1.export('./2s/vaishali2s.wav', format="wav")
 
-audio = AudioSegment.from_wav("../static/files/user2.wav")
+audio = AudioSegment.from_wav("./5s/kat5s.wav")
 length = audio.duration_seconds
 half = (length//2) * 1000
 wav1 = audio[:half]
-wav1.export('./2s/user2.wav', format="wav")
+wav1.export('./2s/kat2s.wav', format="wav")
 
-audio = AudioSegment.from_wav("../static/files/user3.wav")
+audio = AudioSegment.from_wav("./5s/lisa5s.wav")
 length = audio.duration_seconds
 half = (length//2) * 1000
 wav1 = audio[:half]
-wav1.export('./2s/user3.wav', format="wav")
+wav1.export('./2s/lisa2s.wav', format="wav")
