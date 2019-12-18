@@ -39,7 +39,6 @@ def upload_file():
                 wav1.export('./static/files/key1.wav', format="wav")
                 wav2 = audio[half:]
                 wav2.export('./static/files/key2.wav', format="wav")
-                exit()
             else:
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 
@@ -55,6 +54,8 @@ def run_model():
 
 
     f = open("result.txt", "r")
+    user = {'1': 'first', '2': 'second', '3': 'third'}
+
     try:
         predictedUser = f.readlines()[0].strip()
     except:
@@ -64,16 +65,22 @@ def run_model():
     if os.path.exists("result.txt"):
         os.remove("result.txt")
     
+    allprediction = [user[key] for key in predictedUser.split()]
+    display = ''
+
     plural = False
-    if len(predictedUser.split()) > 1:
+    if len(allprediction) > 1:
         plural = True
+        display += ', '.join(allprediction)
+    else:
+        display += allprediction[0]
     
     if plural:
-        predictedUser += " are"
+        display += " ones are"
     elif not plural and predictedUser != '':
-        predictedUser += " is"
+        display += " one is"
 
-    return render_template('result.html', name=predictedUser)
+    return render_template('result.html', name=display)
 
 
 

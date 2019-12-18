@@ -57,11 +57,9 @@ if __name__ == '__main__':
         model2_scores = pickle.load(f)
     scores = [sum(x)/2 for x in zip(model1_scores, model2_scores)]
 
-    print('Scores: \n')
     print(scores)
 
     with open("result.txt", "w+") as w:
-        print('HEREERERERE!!!!!!!!!!!!!!!!!!!!!!')
         threshold = scores[0]
         scores = scores[1:]
         first_key_scores = scores[:len(scores)//2]
