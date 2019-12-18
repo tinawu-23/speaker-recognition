@@ -5,3 +5,4 @@ tensorflow==1.4.0
 keras==2.1.4
 flask
 h5py
+pydub

@@ -19,26 +19,7 @@ $(document).ready(function () {
             $("#noFile1").text(filename.replace("C:\\fakepath\\", ""));
         }
     });
-    $('#chooseFile1a').bind('change', function () {
-        var filename = $("#chooseFile1a").val();
-        if (/^\s*$/.test(filename)) {
-            $(".file-upload1a").removeClass('active');
-            $("#noFile1a").text("No file chosen...");
-        }
-        else {
-            $(".file-upload1a").addClass('active');
-
-            let file = document.getElementById("chooseFile1a").files[0];  // file from input
-            let req = new XMLHttpRequest();
-            let formData = new FormData();
-
-            formData.append("file", file);
-            req.open("POST", '/');
-            req.send(formData);
-
-            $("#noFile1a").text(filename.replace("C:\\fakepath\\", ""));
-        }
-    });
+    
     $('#chooseFile2').bind('change', function () {
         var filename = $("#chooseFile2").val();
         if (/^\s*$/.test(filename)) {

@@ -1,7 +1,7 @@
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
-
+from pydub import AudioSegment
 
 ALLOWED_EXTENSIONS = {'wav'} 
 
@@ -28,7 +28,21 @@ def upload_file():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            if filename == 'key.wav':
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                audio = AudioSegment.from_wav("./static/files/key.wav")
+                print(audio)
+                length = audio.duration_seconds
+                print(length)
+                half = (length//2) * 1000
+                wav1 = audio[:half]
+                wav1.export('./static/files/key1.wav', format="wav")
+                wav2 = audio[half:]
+                wav2.export('./static/files/key2.wav', format="wav")
+                exit()
+            else:
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
             return redirect(url_for('upload_file', filename=filename))
 
 
@@ -37,7 +51,7 @@ def run_model():
     os.system("python model/src/predict.py")
     os.system("python model/src2/pre_process_waveforms.py")
     os.system("python model/src2/predict.py")
-    os.system("python3 model/combined_predict.py")
+    os.system("python model/combined_predict.py")
 
 
     f = open("result.txt", "r")
