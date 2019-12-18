@@ -50,7 +50,7 @@ def main():
     
     # AI project list file
     if args.test_type == 'ai':
-        verify_list = np.loadtxt('model/meta/sets.txt', str)
+        verify_list = np.loadtxt('model/meta/evalsets.txt', str)
     else:
         raise IOError('Unknown test type.')
 

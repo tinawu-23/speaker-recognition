@@ -1,6 +1,6 @@
-0 eval/gendervary/ger5s.wav eval/gendervary/luke5s.wav
-1 eval/gendervary/luke5s--2.wav eval/gendervary/luke5s.wav
-0 eval/gendervary/seth5s.wav eval/gendervary/luke5s.wav
-0 eval/gendervary/ger5s.wav eval/gendervary/luke5s--2.wav
-1 eval/gendervary/luke5s--3.wav eval/gendervary/luke5s--2.wav
-0 eval/gendervary/seth5s.wav eval/gendervary/luke5s--2.wav
+1 eval/timevary/kat10s.wav eval/timevary/kat10s.wav
+1 eval/timevary/kat10s.wav eval/timevary/kat10s.wav
+0 eval/timevary/vaishali10s.wav eval/timevary/kat10s.wav
+0 eval/timevary/lisa10s.wav eval/timevary/kat10s.wav
+0 eval/timevary/vaishali10s.wav eval/timevary/kat10s.wav
+0 eval/timevary/lisa10s.wav eval/timevary/kat10s.wav

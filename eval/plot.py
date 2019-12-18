@@ -15,8 +15,8 @@ axes.set_ylim([0.3, 1.0])
 plt.xlabel('User Sets')
 plt.ylabel('Score')
 
-plt.plot([2, 4], match, 'go-', label='line 1')
-plt.plot([1, 3, 5, 6], nomatch, 'ro-',  label='line 2')
+plt.plot([1, 2], match, 'go-', label='line 1')
+plt.plot([3, 4, 5, 6], nomatch, 'ro-',  label='line 2')
 
 red = mpatches.Patch(color='red', label='Non-matching Audio Sets')
 green = mpatches.Patch(color='green', label='Matching Audio Sets')
