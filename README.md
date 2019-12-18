@@ -2,10 +2,11 @@
 ## Usage
 To run model:     
 `cd model/src`    
-run `python predict.py`     
+run `python predict.py` 
 <br>
 To run application:     
-`python app.py`     
+`python app.py`  
+Make sure your uploaded audio files are called key.wav and user1.wav, user2.wav, and user3.wav or change model/meta/sets.txt
 ## Requirements
 `pip install -r requirements.txt`
 - Python 3.6.5    
