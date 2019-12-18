@@ -67,7 +67,7 @@ if __name__ == '__main__':
         y_pred = [1 if x > threshold or y > threshold else 0 for x, y in zip(first_key_scores, second_key_scores)]
         print(y_pred)
         try:
-            w.write(str(y_pred.index(1)))
+            w.write(str(y_pred.index(1)+1))
         except ValueError:
             w.write("")
     
