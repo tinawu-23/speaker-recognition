@@ -65,9 +65,10 @@ if __name__ == '__main__':
         first_key_scores = scores[:len(scores)//2]
         second_key_scores = scores[len(scores)//2:]
         y_pred = [1 if x > threshold or y > threshold else 0 for x, y in zip(first_key_scores, second_key_scores)]
-        print(y_pred)
+        indexes = [i+1 for i,x in enumerate(y_pred) if x == 1]
+        print(indexes)
         try:
-            w.write(str(y_pred.index(1)+1))
+            w.write(' '.join(str(x) for x in indexes))
         except ValueError:
             w.write("")
     

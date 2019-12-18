@@ -41,24 +41,26 @@ def run_model():
 
 
     f = open("result.txt", "r")
-    try: 
+    try:
         predictedUser = f.readlines()[0].strip()
-    except: 
-        predictedUser = '0'
-        
+    except:
+        predictedUser = ''
     f.close()
-        
+            
     if os.path.exists("result.txt"):
         os.remove("result.txt")
+    
+    plural = False
+    if len(predictedUser.split()) > 1:
+        plural = True
+    
+    if plural:
+        predictedUser += " are"
+    elif not plural and predictedUser != '':
+        predictedUser += " is"
 
-    if predictedUser == '1':
-        return render_template('result1.html')
-    elif predictedUser == '2':
-        return render_template('result2.html')
-    elif predictedUser == '3':
-        return render_template('result3.html')
-    else:
-        return render_template('noresult.html')
+    return render_template('result.html', name=predictedUser)
+
 
 
 if __name__ == "__main__":
