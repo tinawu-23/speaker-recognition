@@ -105,6 +105,8 @@ def main():
     feats = np.array(feats)
 
     allscores = []
+    match = []
+    nomatch = []
 
     # ==> compute the pair-wise similarity.
     print("Model 1 scores")
@@ -118,9 +120,20 @@ def main():
         scores += [np.sum(v1*v2)]
         labels += [verify_lb[c]]
 
+        if c != 0 and verify_lb[c] == 1:
+            match.append(scores[-1])
+        elif verify_lb[c] == 0:
+            nomatch.append(scores[-1])
+
         allscores.append(scores[-1])
         print('Score : {}'.format(scores[-1]))
     
+    matchavg = (sum(match)/float(len(match))).tolist()
+    nomatchavg = (sum(nomatch)/float(len(nomatch))).tolist()
+
+    with open("./eval/result.txt", "w+") as w:
+        w.write(str(matchavg)+','+str(nomatchavg)+'\n')
+
     with open("result1.pickle", "wb") as w:
         pickle.dump(scores, w)
 
