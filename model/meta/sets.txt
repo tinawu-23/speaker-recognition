@@ -1,3 +1,7 @@
+1 key1.wav key.wav
 0 user1.wav key.wav
 0 user2.wav key.wav
 0 user3.wav key.wav
+0 user1.wav key1.wav
+0 user2.wav key1.wav
+0 user3.wav key1.wav

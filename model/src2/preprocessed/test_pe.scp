@@ -1,0 +1,5 @@
+static/files/key1.wav /Users/chanhee/ND/Senior/Fall/AI/project/speaker-recognition/model/src2/preprocessed/test_pe.ark 0
+static/files/key.wav /Users/chanhee/ND/Senior/Fall/AI/project/speaker-recognition/model/src2/preprocessed/test_pe.ark 1
+static/files/user1.wav /Users/chanhee/ND/Senior/Fall/AI/project/speaker-recognition/model/src2/preprocessed/test_pe.ark 2
+static/files/user2.wav /Users/chanhee/ND/Senior/Fall/AI/project/speaker-recognition/model/src2/preprocessed/test_pe.ark 3
+static/files/user3.wav /Users/chanhee/ND/Senior/Fall/AI/project/speaker-recognition/model/src2/preprocessed/test_pe.ark 4
