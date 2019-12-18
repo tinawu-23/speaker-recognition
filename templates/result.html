@@ -21,7 +21,11 @@
     </div>
     <br>
     <div class="alert">
-        <p>The <b>first</b> one is the user.</p>
+        {% if name %}
+        <p>The <b>{{ name }}</b> the user.</p>
+        {% else %}
+        <p>No predicted result.</p>
+        {% endif %}
     </div>
 
     <br>
