@@ -19,5 +19,5 @@ Make sure your uploaded audio files are called key.wav, key1.wav and user1.wav, 
 
 ## Source
 https://github.com/WeidiXie/VGG-Speaker-Recognition      
-http://www.robots.ox.ac.uk/~vgg/research/speakerID/
+http://www.robots.ox.ac.uk/~vgg/research/speakerID/  
 https://github.com/Jungjee/RawNet
