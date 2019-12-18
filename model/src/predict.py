@@ -1,3 +1,9 @@
+'''
+    Predict from model1
+    modified from https://github.com/WeidiXie/VGG-Speaker-Recognition
+'''
+
+
 from __future__ import absolute_import
 from __future__ import print_function
 import os
@@ -74,11 +80,8 @@ def main():
                                                 mode='eval', args=args)
 
     # ==> load pre-trained model
-    if args.resume:
-        # ==> get real_model from arguments input,
-        # load the model if the imag_model == real_model.
-        
-        #'VGG-Speaker-Recognition model/src/weights.h5' in below block used to be isfile(args.resume) etc
+    if args.resume:        
+        # Load pretrained weight
         if os.path.isfile('model/src/weights.h5'):
             network_eval.load_weights('model/src/weights.h5', by_name=True)
             print('Successfully loading model {}.'.format(args.resume))
@@ -128,11 +131,9 @@ def main():
         allscores.append(scores[-1])
         print('Score : {}'.format(scores[-1]))
     
-    # matchavg = (sum(match)/float(len(match))).tolist()
-    # nomatchavg = (sum(nomatch)/float(len(nomatch))).tolist()
-
-    match = [str(x) for x in match]
-    nomatch = [str(x) for x in nomatch]
+    # For evaluation
+    # match = [str(x) for x in match]
+    # nomatch = [str(x) for x in nomatch]
 
     # with open("./eval/result.txt", "a") as w:
     #     matches = ','.join(match)
@@ -142,16 +143,6 @@ def main():
 
     with open("result1.pickle", "wb") as w:
         pickle.dump(scores, w)
-
-
-    # maxscore = max(allscores)
-    # if maxscore < 0.6:
-    #     ind = '0'
-    # else:
-    #     ind = str(allscores.index(maxscore) + 1)
-    
-    # f.write(ind)
-    #f.close()
 
 
 if __name__ == "__main__":

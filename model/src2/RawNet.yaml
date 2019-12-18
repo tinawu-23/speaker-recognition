@@ -31,5 +31,3 @@ model:
   c_alpha: 0.5
   nb_gru_node: [1024]
   req_drop: 0.3
-  
-

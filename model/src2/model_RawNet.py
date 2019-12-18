@@ -1,3 +1,9 @@
+'''
+	Model definition for RawNet
+	from https://github.com/Jungjee/RawNet
+'''
+
+
 import numpy as np
 import keras
 import tensorflow as tf

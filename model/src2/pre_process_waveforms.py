@@ -1,5 +1,6 @@
 '''
-	Preprocess voice 
+	Preprocess wav files
+	modified from https://github.com/Jungjee/RawNet
 '''
 
 
@@ -11,15 +12,19 @@ from multiprocessing import Process
 
 def pre_emp(x):
 	'''
-	Pre-emphasize raw waveform '''
+		Pre-emphasize raw waveform 
+	'''
 	return np.asarray(x[1:] - 0.97 * x[:-1], dtype=np.float32)
 
 def extract_waveforms(lines, dir_trg):
+	'''
+		Processes waveform and writes to a numpy object
+	'''
 
 	f_scp_pe = open(dir_trg + 'test_pe.scp', 'w')
 	processed_voices = []
 	for i, line in enumerate(lines):
-		full_path, file_name = line
+		full_path, _ = line
 
 		wav ,_= sf.read(full_path, dtype='int16')
 		wav = pre_emp(wav)

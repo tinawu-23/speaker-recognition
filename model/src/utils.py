@@ -1,5 +1,9 @@
 # Third Party
 import librosa
+'''
+    From https://github.com/WeidiXie/VGG-Speaker-Recognition
+'''
+
 import numpy as np
 import os
 

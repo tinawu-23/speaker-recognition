@@ -72,8 +72,10 @@ def run_model():
     if len(allprediction) > 1:
         plural = True
         display += ', '.join(allprediction)
-    else:
+    elif allprediction:
         display += allprediction[0]
+    else:
+        display = ''
     
     if plural:
         display += " ones are"
