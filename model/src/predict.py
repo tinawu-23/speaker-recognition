@@ -128,11 +128,17 @@ def main():
         allscores.append(scores[-1])
         print('Score : {}'.format(scores[-1]))
     
-    matchavg = (sum(match)/float(len(match))).tolist()
-    nomatchavg = (sum(nomatch)/float(len(nomatch))).tolist()
+    # matchavg = (sum(match)/float(len(match))).tolist()
+    # nomatchavg = (sum(nomatch)/float(len(nomatch))).tolist()
 
-    with open("./eval/result.txt", "w+") as w:
-        w.write(str(matchavg)+','+str(nomatchavg)+'\n')
+    match = [str(x) for x in match]
+    nomatch = [str(x) for x in nomatch]
+
+    # with open("./eval/result.txt", "a") as w:
+    #     matches = ','.join(match)
+    #     nomatches = ','.join(nomatch)
+    #     w.write(matches+'\n')
+    #     w.write(nomatches+'\n')
 
     with open("result1.pickle", "wb") as w:
         pickle.dump(scores, w)
