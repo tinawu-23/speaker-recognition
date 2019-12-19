@@ -4,7 +4,7 @@ To run model1:
 `cd model/src`    
 `python predict.py` 
 To run model2:     
-`cd model/src1`    
+`cd model/src2`    
 `python predict.py` 
 
 To run application:     
