@@ -14,7 +14,7 @@ class Classifier():
 
         self.model = Sequential()
         self.model.add(Dense(64, input_dim=1, activation='relu'))
-        #self.model.add(Dropout(0.5))
+        self.model.add(Dropout(0.5))
         self.model.add(Dense(128, activation='relu'))
         self.model.add(Dense(512, activation='relu'))
         self.model.add(Dropout(0.5))
@@ -27,7 +27,6 @@ class Classifier():
               metrics=['accuracy'])
 
     def train(self, scores, labels, epochs=30):
-        # Need to partition scores and labels
         scores_train = scores[:4300]
         scores_dev = scores[4300:]
         labels_train = labels[:4300]
@@ -42,15 +41,16 @@ class Classifier():
 
 
 if __name__ == '__main__':
-    classifier = Classifier()
 
+    # MLP classifier is defined, but not used
+    # classifier = Classifier()
     # scores = np.load("model/prediction_scores.npy")
     # labels = np.load("model/groundtruth_labels.npy")
     # print(scores, labels)
     # classifier.train(scores, labels)
 
 
-
+    # Open score file from both models
     with open("result1.pickle", "rb") as f:
         model1_scores = pickle.load(f)
     with open("result2.pickle", "rb") as f:
@@ -59,6 +59,7 @@ if __name__ == '__main__':
 
     print(scores)
 
+    # Using the threshold, output the prediction
     with open("result.txt", "w+") as w:
         threshold = scores[0]
         scores = scores[1:]

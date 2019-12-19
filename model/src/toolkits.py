@@ -1,3 +1,8 @@
+'''
+    From https://github.com/WeidiXie/VGG-Speaker-Recognition
+'''
+
+
 import os
 import numpy as np
 
