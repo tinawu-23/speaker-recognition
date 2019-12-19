@@ -1,0 +1,6 @@
+0 eval/timevary/10s/user1-key.wav eval/timevary/10s/user2.wav
+1 eval/timevary/10s/user1-key.wav eval/timevary/10s/user1.wav
+0 eval/timevary/10s/user1-key.wav eval/timevary/5s/user3.wav
+0 eval/timevary/10s/user1.wav eval/timevary/10s/user2.wav
+1 eval/timevary/10s/user1.wav eval/timevary/5s/user3.wav
+0 eval/timevary/10s/user1.wav eval/timevary/10s/user1.wav
