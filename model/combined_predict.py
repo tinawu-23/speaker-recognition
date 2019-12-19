@@ -55,7 +55,9 @@ if __name__ == '__main__':
         model1_scores = pickle.load(f)
     with open("result2.pickle", "rb") as f:
         model2_scores = pickle.load(f)
-    scores = [sum(x)/2 for x in zip(model1_scores, model2_scores)]
+
+    # Weight first model more b/c it has higher accuracy in the Voxceleb
+    scores = [(x*5 + y) / 6 for x, y in zip(model1_scores, model2_scores)]
 
     print(scores)
 
